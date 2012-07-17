@@ -27,78 +27,86 @@ import org.jboss.errai.common.client.api.annotations.Portable;
 @SuppressWarnings("serial")
 @Entity
 @Portable
-public class TicketCategory implements Serializable {
+public class TicketCategory implements Serializable
+{
 
-    /* Declaration of fields */
+   /* Declaration of fields */
 
-    /**
-     * The synthetic id of the object.
-     */
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Long id;
+   /**
+    * The synthetic id of the object.
+    */
+   @Id
+   @GeneratedValue(strategy = IDENTITY)
+   private Long id;
 
-    /**
-     * <p>
-     * The description of the of ticket category.
-     * </p>
-     * 
-     * <p>
-     * The description forms the natural id of the ticket category, and so must be unique.
-     * </p>
-     * 
-     * <p>
-     * The description must not be null and must be one or more characters, the Bean Validation constrain <code>@NotEmpty</code>
-     * enforces this.
-     * </p>
-     * 
-     */
-    @Column(unique = true)
-    @NotEmpty
-    private String description;
+   /**
+    * <p>
+    * The description of the of ticket category.
+    * </p>
+    * 
+    * <p>
+    * The description forms the natural id of the ticket category, and so must be unique.
+    * </p>
+    * 
+    * <p>
+    * The description must not be null and must be one or more characters, the Bean Validation constrain <code>@NotEmpty</code>
+    * enforces this.
+    * </p>
+    * 
+    */
+   @Column(unique = true)
+   @NotEmpty
+   private String description;
 
-    /* Boilerplate getters and setters */
+   /* Boilerplate getters and setters */
 
-    public Long getId() {
-        return id;
-    }
+   public Long getId()
+   {
+      return id;
+   }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+   public void setId(Long id)
+   {
+      this.id = id;
+   }
 
-    public String getDescription() {
-        return description;
-    }
+   public String getDescription()
+   {
+      return description;
+   }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+   public void setDescription(String description)
+   {
+      this.description = description;
+   }
 
-    /* toString(), equals() and hashCode() for TicketCategory, using the natural identity of the object */
+   /* toString(), equals() and hashCode() for TicketCategory, using the natural identity of the object */
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+   @Override
+   public boolean equals(Object o)
+   {
+      if (this == o)
+         return true;
+      if (o == null || getClass() != o.getClass())
+         return false;
 
-        TicketCategory that = (TicketCategory) o;
+      TicketCategory that = (TicketCategory) o;
 
-        if (description != null ? !description.equals(that.description) : that.description != null)
-            return false;
+      if (description != null ? !description.equals(that.description) : that.description != null)
+         return false;
 
-        return true;
-    }
+      return true;
+   }
 
-    @Override
-    public int hashCode() {
-        return description != null ? description.hashCode() : 0;
-    }
+   @Override
+   public int hashCode()
+   {
+      return description != null ? description.hashCode() : 0;
+   }
 
-    @Override
-    public String toString() {
-        return description;
-    }
+   @Override
+   public String toString()
+   {
+      return description;
+   }
 }

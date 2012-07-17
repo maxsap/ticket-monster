@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+<rootpath>"/rest"</rootpath>
+<rest>
+<applicationclass>
+<package>org.jboss.jdf.example.ticketmonster.rest</package>
+<name>/pedroigor/java/workspace-new/picketlink/ticket-monster/demo/src/main/java/org/jboss/jdf/example/ticketmonster/rest/JaxRsActivator.java</name>
+</applicationclass>
+</rest>
+<org>
+<jboss>
+<forge>
+<scaffold>
+<faces>
+<FacesScaffold_targetDir>admin</FacesScaffold_targetDir>
+</faces>
+</scaffold>
+</forge>
+</jboss>
+</org>
+</configuration>

@@ -1,0 +1,30 @@
+package org.picketbox.drools.authorization;
+
+import java.security.Principal;
+import org.picketbox.core.authorization.resource.WebResource;
+
+dialect "mvel"
+
+rule "Normal User Authorization Rule"
+dialect "java"
+no-loop
+ when
+  $principal : Principal( name == "user" ) // condition
+  $resource : WebResource(!getRequest().getRequestURI().contains("/admin"))
+ then
+    modify ($resource){
+       setAuthorized(true)
+    };
+end
+
+rule "Administrators Authorization Rule"
+dialect "java"
+no-loop
+ when
+  $principal : Principal( name == "admin" ) // condition
+  $resource : WebResource()
+ then
+    modify ($resource){
+       setAuthorized(true)
+    };
+end
