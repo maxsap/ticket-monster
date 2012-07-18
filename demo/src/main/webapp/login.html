@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ticket Monster</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=0;">
+
+
+<link type="text/css" rel="stylesheet"
+	href="../resources/css/screen.css" />
+<link rel="stylesheet" href="resources/css/bootstrap.css"
+	type="text/css" media="all" />
+<link rel="stylesheet" href="resources/css/custom.css" type="text/css"
+	media="all">
+
+<link href='http://fonts.googleapis.com/css?family=Rokkitt'
+	rel='stylesheet' type='text/css'>
+
+<!-- Add JavaScript library for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+	<!--
+    Helper page, to be replaced by Forge generation
+-->
+	<div id="logo">
+		<div class="wrap">
+			<h1>Ticket Monster</h1>
+		</div>
+	</div>
+	<div id="container">
+		<div id="content" class="container-fluid">
+			<div class="well">
+				<h2 class="page-header special-title">Welcome to TicketMonster</h2>
+
+				<p>Please, provide your credentials:</p>
+
+				<form id="login_form" name="login_form" method="post"
+					action="j_security_check"
+					enctype="application/x-www-form-urlencoded">
+					<div style="margin-left: 15px;">
+						<p>
+							<label for="username"> Username</label><br /> <input
+								id="username" type="text" name="j_username" size="20" />
+						</p>
+						<p>
+							<label for="password"> Password</label><br /> <input
+								id="password" type="password" name="j_password" value=""
+								size="20" />
+						</p>
+						<input id="submit" type="submit" name="submit" value="Login" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<footer style="">
+		<div style="text-align: center;">
+			<img src="../resources/img/dualbrand_as7eap.png" alt="HTML5" />
+		</div>
+	</footer>
+
+</body>
+</html>

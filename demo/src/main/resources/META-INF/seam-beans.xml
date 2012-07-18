@@ -4,6 +4,7 @@
 	xmlns:s="urn:java:ee"
 	xmlns:mail="urn:java:org.jboss.seam.mail.core"
 	xmlns:pb="urn:java:org.picketbox.core.authentication.http"
+	xmlns:pbr="urn:java:org.picketbox.core.resource"
 	xmlns:pbauthimpl="urn:java:org.picketbox.core.authentication.impl"
 	xmlns:pbs="urn:java:org.picketbox.solder.authentication"
 	xmlns:pbauthzd="urn:java:org.picketbox.drools.authorization"
@@ -17,7 +18,21 @@
 				<pbauthimpl:PropertiesFileBasedAuthenticationManager/>
 			</s:value>
 		</pb:authManager>
+		<pb:formAuthPage>
+			<s:value>/login.html</s:value>
+		</pb:formAuthPage>
 	</pb:HTTPFormAuthentication>
+	
 	<!-- Configures the PicketBox Drools Authorization Manager -->
 	<pbauthzd:PicketBoxDroolsAuthorizationManager/>
+	
+	<!-- Configures the which resources should be protected. By defaul all are protected. -->
+	<pbr:ProtectedResourceManager>
+		<s:replaces/>
+		<pbr:resources>
+			<s:value>
+				<pbr:ProtectedResource pattern="/resources/*" constraint="NOT_PROTECTED"/>
+			</s:value>
+		</pbr:resources>
+	</pbr:ProtectedResourceManager>
 </beans>
