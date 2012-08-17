@@ -5,23 +5,11 @@ import org.picketbox.http.authorization.resource.WebResource;
 
 dialect "mvel"
 
-rule "Normal User Authorization Rule"
+rule "By default all resources are protected. This is a general rule to allows access to all resources"
 dialect "java"
 no-loop
  when
-  $principal : Principal( name == "guest" ) // condition
-  $resource : WebResource(!getRequest().getRequestURI().contains("/admin"))
- then
-    modify ($resource){
-       setAuthorized(true)
-    };
-end
-
-rule "Administrators Authorization Rule"
-dialect "java"
-no-loop
- when
-  $principal : Principal( name == "admin" ) // condition
+  $principal : Principal() // condition
   $resource : WebResource()
  then
     modify ($resource){

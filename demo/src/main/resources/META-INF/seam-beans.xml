@@ -16,20 +16,26 @@
 		<s:replaces/>
 		<pbs:AuthenticationScheme/>
 		<pbhttpauth:formAuthPage>
-			<s:value>/login.html</s:value>
+			<s:value>/faces/login.xhtml</s:value>
 		</pbhttpauth:formAuthPage>
 	</pbhttpauth:HTTPFormAuthentication>
 	
 	<pbauthmgr:PropertiesFileBasedAuthenticationManager/>
 		
 	<!-- Configures the PicketBox Drools Authorization Manager -->
-<!-- 	<pbauthzd:PicketBoxDroolsAuthorizationManager/> -->
+	<pbauthzd:PicketBoxDroolsAuthorizationManager/>
 	
 	<pbhttpr:HTTPProtectedResourceManager>
 		<s:replaces/>
 		<pbhttpr:resources>
 			<s:value>
 				<pbr:ProtectedResource pattern="/resources/*" constraint="NOT_PROTECTED" />
+			</s:value>
+			<s:value>
+				<pbr:ProtectedResource pattern="/*.css" constraint="NOT_PROTECTED" />
+			</s:value>
+			<s:value>
+				<pbr:ProtectedResource pattern="/picketbox_logout" constraint="AUTHENTICATION" />
 			</s:value>
 			<s:value>
 				<pbr:ProtectedResource pattern="/admin/*" constraint="ALL">
