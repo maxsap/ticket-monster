@@ -3,36 +3,35 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:s="urn:java:ee"
 	xmlns:mail="urn:java:org.jboss.seam.mail.core"
-	xmlns:pb="urn:java:org.picketbox.core.authentication.http"
-	xmlns:pbr="urn:java:org.picketbox.core.resource"
-	xmlns:pbauthimpl="urn:java:org.picketbox.core.authentication.impl"
+	xmlns:pbhttpauth="urn:java:org.picketbox.http.authentication"
+	xmlns:pbhttpr="urn:java:org.picketbox.http.resource"
+	xmlns:pbr="urn:java:org.picketbox.http.resource"
+	xmlns:pbauthmgr="urn:java:org.picketbox.core.authentication.manager"
 	xmlns:pbs="urn:java:org.picketbox.solder.authentication"
 	xmlns:pbauthzd="urn:java:org.picketbox.drools.authorization"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://docs.jboss.org/cdi/beans_1_0.xsd">
+	
 	<!-- Configures a HTTPFormAuthentication bean -->
-	<pb:HTTPFormAuthentication>
+	<pbhttpauth:HTTPFormAuthentication>
 		<s:replaces/>
 		<pbs:AuthenticationScheme/>
-		<pb:authManager>
-			<s:value>
-				<pbauthimpl:PropertiesFileBasedAuthenticationManager/>
-			</s:value>
-		</pb:authManager>
-		<pb:formAuthPage>
+		<pbhttpauth:formAuthPage>
 			<s:value>/login.html</s:value>
-		</pb:formAuthPage>
-	</pb:HTTPFormAuthentication>
+		</pbhttpauth:formAuthPage>
+	</pbhttpauth:HTTPFormAuthentication>
 	
+	<pbauthmgr:PropertiesFileBasedAuthenticationManager/>
+		
 	<!-- Configures the PicketBox Drools Authorization Manager -->
 	<pbauthzd:PicketBoxDroolsAuthorizationManager/>
 	
-	<!-- Configures the which resources should be protected. By defaul all are protected. -->
-	<pbr:ProtectedResourceManager>
+	<pbhttpr:HTTPProtectedResourceManager>
 		<s:replaces/>
-		<pbr:resources>
+		<pbhttpr:resources>
 			<s:value>
 				<pbr:ProtectedResource pattern="/resources/*" constraint="NOT_PROTECTED"/>
 			</s:value>
-		</pbr:resources>
-	</pbr:ProtectedResourceManager>
+		</pbhttpr:resources>
+	</pbhttpr:HTTPProtectedResourceManager>
+	
 </beans>

@@ -22,6 +22,10 @@
     <location>/faces/error.xhtml</location>
   </error-page>
   <error-page>
+    <error-code>403</error-code>
+    <location>/faces/accessDenied.xhtml</location>
+  </error-page>
+  <error-page>
     <error-code>500</error-code>
     <location>/faces/error.xhtml</location>
   </error-page>

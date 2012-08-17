@@ -1,7 +1,7 @@
 package org.picketbox.drools.authorization;
 
 import java.security.Principal;
-import org.picketbox.core.authorization.resource.WebResource;
+import org.picketbox.http.authorization.resource.WebResource;
 
 dialect "mvel"
 
@@ -9,7 +9,7 @@ rule "Normal User Authorization Rule"
 dialect "java"
 no-loop
  when
-  $principal : Principal( name == "user" ) // condition
+  $principal : Principal( name == "guest" ) // condition
   $resource : WebResource(!getRequest().getRequestURI().contains("/admin"))
  then
     modify ($resource){
