@@ -5,14 +5,14 @@ import org.picketbox.http.authorization.resource.WebResource;
 
 dialect "mvel"
 
-rule "By default all resources are protected. This is a general rule to allows access to all resources"
+rule "Simple example rule that disables the section allocation"
 dialect "java"
 no-loop
  when
-  $principal : Principal() // condition
-  $resource : WebResource()
- then
+   $principal : Principal( name == "admin" ) // condition
+   $resource : WebResource(getRequest().getRequestURI().contains("/admin/sectionAllocation"))
+then
     modify ($resource){
-       setAuthorized(true)
+       setAuthorized(false)
     };
 end
