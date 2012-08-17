@@ -23,13 +23,20 @@
 	<pbauthmgr:PropertiesFileBasedAuthenticationManager/>
 		
 	<!-- Configures the PicketBox Drools Authorization Manager -->
-	<pbauthzd:PicketBoxDroolsAuthorizationManager/>
+<!-- 	<pbauthzd:PicketBoxDroolsAuthorizationManager/> -->
 	
 	<pbhttpr:HTTPProtectedResourceManager>
 		<s:replaces/>
 		<pbhttpr:resources>
 			<s:value>
-				<pbr:ProtectedResource pattern="/resources/*" constraint="NOT_PROTECTED"/>
+				<pbr:ProtectedResource pattern="/resources/*" constraint="NOT_PROTECTED" />
+			</s:value>
+			<s:value>
+				<pbr:ProtectedResource pattern="/admin/*" constraint="ALL">
+					<pbr:roles>
+						<s:value>admin</s:value>
+					</pbr:roles>
+				</pbr:ProtectedResource>
 			</s:value>
 		</pbhttpr:resources>
 	</pbhttpr:HTTPProtectedResourceManager>
