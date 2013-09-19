@@ -104,7 +104,6 @@ define([
             "click input[name='add']":"addQuantities"
         },
         render:function () {
-
             var self = this;
             $.ajax({url: (config.baseUrl + "rest/carts"),
                     data:JSON.stringify({performance:this.model.performanceId}),

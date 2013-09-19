@@ -35,6 +35,7 @@ define("initializer", ["jquery"], function ($) {
     $('head').append('<link rel="stylesheet" href="resources/css/bootstrap.css" type="text/css" media="all"/>');
     $('head').append('<link rel="stylesheet" href="resources/css/custom.css" type="text/css" media="all">');
     $('head').append('<link href="http://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet" type="text/css">');
+    $('head').append('<script type="text/javascript" src="resources/js/app/security.js"/>');
 });
 
 // Now we declare all the dependencies

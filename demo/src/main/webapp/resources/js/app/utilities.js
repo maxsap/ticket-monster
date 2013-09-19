@@ -71,6 +71,7 @@ define(['underscore', 'backbone'], function (_, Backbone) {
                     this.currentView.close();
                 }
                 this.currentView = view;
+            	checkUserInfo();
                 return this.currentView.render();
             }
         },

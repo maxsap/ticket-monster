@@ -1,3 +1,5 @@
+var init = false;
+
 /**
  * A module for the router of the desktop application
  */
@@ -12,6 +14,7 @@ define("router", [
     'app/collections/bookings',
     'app/collections/events',
     'app/collections/venues',
+    'app/views/desktop/login',
     'app/views/desktop/home',
     'app/views/desktop/events',
     'app/views/desktop/venues',
@@ -31,6 +34,7 @@ define("router", [
             Bookings,
             Events,
             Venues,
+            LoginView,
             HomeView,
             EventsView,
             VenuesView,
@@ -42,8 +46,8 @@ define("router", [
             MainTemplate) {
 
     $(document).ready(new function() {
-       utilities.applyTemplate($('body'), MainTemplate)
-    })
+       utilities.applyTemplate($('body'), MainTemplate);
+    });
 
     /**
      * The Router class contains all the routes within the application - 
@@ -59,6 +63,8 @@ define("router", [
         },
         routes:{
             "":"home",
+            "login":"login",
+            "logout":"logout",
             "about":"home",
             "events":"events",
             "events/:id":"eventDetail",
@@ -86,8 +92,14 @@ define("router", [
                     utilities.viewManager.showView(venuesView);
                 }).fetch({reset:true});
         },
+        login:function () {
+            utilities.viewManager.showView(new LoginView({el:$("#content")}));
+        },
+        logout:function () {
+        	performLogout();
+        },
         home:function () {
-            utilities.viewManager.showView(new HomeView({el:$("#content")}));
+        	utilities.viewManager.showView(new HomeView({el:$("#content")}));
         },
         bookTickets:function (showId, performanceId) {
             var createBookingView = 

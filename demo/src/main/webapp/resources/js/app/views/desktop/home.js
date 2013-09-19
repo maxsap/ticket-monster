@@ -3,8 +3,9 @@
  */
 define([
     'utilities',
+    'configuration',
     'text!../../../../templates/desktop/home.html'
-], function (utilities, HomeTemplate) {
+], function (utilities, config, HomeTemplate) {
 
     var HomeView = Backbone.View.extend({
         render:function () {

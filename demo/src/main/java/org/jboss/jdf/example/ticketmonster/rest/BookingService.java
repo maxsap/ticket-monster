@@ -30,6 +30,7 @@ import org.jboss.jdf.example.ticketmonster.model.Section;
 import org.jboss.jdf.example.ticketmonster.model.Ticket;
 import org.jboss.jdf.example.ticketmonster.model.TicketCategory;
 import org.jboss.jdf.example.ticketmonster.model.TicketPrice;
+import org.jboss.jdf.example.ticketmonster.security.UserLoggedIn;
 import org.jboss.jdf.example.ticketmonster.service.AllocatedSeats;
 import org.jboss.jdf.example.ticketmonster.service.SeatAllocationService;
 import org.jboss.jdf.example.ticketmonster.util.MultivaluedHashMap;
@@ -83,6 +84,7 @@ public class BookingService extends BaseEntityService<Booking> {
      */
     @DELETE
     @Path("/{id:[0-9][0-9]*}")
+    @UserLoggedIn
     public Response deleteBooking(@PathParam("id") Long id) {
         Booking booking = getEntityManager().find(Booking.class, id);
         if (booking == null) {
@@ -122,6 +124,7 @@ public class BookingService extends BaseEntityService<Booking> {
      * {@link BookingRequest} class.
      */
     @Consumes(MediaType.APPLICATION_JSON)
+    @UserLoggedIn
     public Response createBooking(BookingRequest bookingRequest) {
         try {
             // identify the ticket price categories in this request

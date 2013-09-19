@@ -1,11 +1,12 @@
 package org.jboss.jdf.example.ticketmonster.util;
 
-import java.util.logging.Logger;
+import org.picketlink.annotations.PicketLink;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.logging.Logger;
 
 /**
  * This class uses CDI to alias Java EE resources, such as the persistence context, to CDI beans
@@ -29,6 +30,16 @@ public class Resources {
    @Produces
    @PersistenceContext
    private EntityManager em;
+
+    /**
+     * <p>
+     * Produces a {@link EntityManager} using the qualifier {@link PicketLink} that will be used by the PicketLink IDM.
+     * </p>
+     */
+    @Produces
+    @PicketLink
+    @PersistenceContext(unitName = "primary")
+    private EntityManager picketLinkEntityManager;
    
    /**
     * Provider injectable loggers based around Java Util Logging.
@@ -49,5 +60,4 @@ public class Resources {
            return "";
        }
    }
-   
 }

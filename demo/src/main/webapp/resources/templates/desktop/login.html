@@ -1,0 +1,50 @@
+<div class="container well">
+	<div class="row">
+
+		<div class="span6">
+
+			<h3 class="page-header">
+				<a href="http://jboss.org/jdf" rel="tooltip"
+					title="Learn more about the JBoss Developer Framework!">Are you
+					New to TicketMonster ?</a>
+			</h3>
+			<p>If you are not a TicketMonster user, please fill up the form
+				bellow.</p>
+			<p>This is a important step if you want to book tickets for all
+				available events.</p>
+			<br />
+			<p class="help-block error-notification"  id="error-signup">
+			<form id="signUpForm" onsubmit="return false;">
+				<input id="firstName"
+					type="text" name="firstName" required placeholder="Your First Name" /> <br /> <input id="lastName" type="text" name="lastName" required placeholder="Your Last Name" /> <br /> <input id="email" type="email" name="email" required placeholder="Your Email" />
+				<br /> 
+				<input id="userPassword"
+					type="password" name="userPassword" required placeholder="Your Password" /> <br /><input
+					id="passwordConfirmation" type="password"
+					name="passwordConfirmation" required placeholder="Confirm your password" />&nbsp;&nbsp;<input type="submit"
+					value="Sign Up" name="signUp" id="signUp" class="btn" />
+			</form>
+		</div>
+
+		<div class="span6">
+			<div class="">
+				<h3 class="page-header">
+					<a href="http://jboss.org/jdf" rel="tooltip"
+						title="Learn more about the JBoss Developer Framework!">Or
+						Sign In to access exclusive services ...</a>
+				</h3>
+				<p class="help-block error-notification"  id="error-signin">
+				<form id="signInForm" onsubmit="return false;">
+					<input id="userName" type="email"
+						name="userName" required placeholder="Your Email" /> 
+					<br />
+					<input
+						id="password" type="password" name="password" required placeholder="Your Password" />&nbsp;&nbsp;<input
+						type="submit" name="signIn" id="signIn" value="Ok" class="btn" />
+				</form>
+				<img src="resources/img/splash-ticketmonster.png" width="80%" style="float: left"/>
+			</div>
+		</div>
+	</div>
+
+</div>

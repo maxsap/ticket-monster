@@ -39,129 +39,142 @@ import org.jboss.errai.common.client.api.annotations.Portable;
 @JsonIgnoreProperties("show")
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = { "section_id", "show_id", "ticketcategory_id" }))
 @Portable
-public class TicketPrice implements Serializable {
+public class TicketPrice implements Serializable
+{
 
-    /* Declaration of fields */
+   /* Declaration of fields */
 
-    /**
-     * The synthetic id of the object.
-     */
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Long id;
+   /**
+    * The synthetic id of the object.
+    */
+   @Id
+   @GeneratedValue(strategy = IDENTITY)
+   private Long id;
 
-    /**
-     * <p>
-     * The show to which this ticket price category belongs. The <code>@ManyToOne<code> JPA mapping establishes this relationship.
-     * </p>
-     * 
-     * <p>
-     * The <code>@NotNull</code> Bean Validation constraint means that the show must be specified.
-     * </p>
-     */
-    @ManyToOne
-    @NotNull
-    private Show show;
+   /**
+    * <p>
+    * The show to which this ticket price category belongs. The <code>@ManyToOne<code> JPA mapping establishes this relationship.
+    * </p>
+    * 
+    * <p>
+    * The <code>@NotNull</code> Bean Validation constraint means that the show must be specified.
+    * </p>
+    */
+   @ManyToOne
+   @NotNull
+   private Show show;
 
-    /**
-     * <p>
-     * The section to which this ticket price category belongs. The <code>@ManyToOne<code> JPA mapping establishes this relationship.
-     * </p>
-     * 
-     * <p>
-     * The <code>@NotNull</code> Bean Validation constraint means that the section must be specified.
-     * </p>
-     */
-    @ManyToOne
-    @NotNull
-    private Section section;
+   /**
+    * <p>
+    * The section to which this ticket price category belongs. The <code>@ManyToOne<code> JPA mapping establishes this relationship.
+    * </p>
+    * 
+    * <p>
+    * The <code>@NotNull</code> Bean Validation constraint means that the section must be specified.
+    * </p>
+    */
+   @ManyToOne
+   @NotNull
+   private Section section;
 
-    /**
-     * <p>
-     * The ticket category to which this ticket price category belongs. The <code>@ManyToOne<code> JPA mapping establishes this relationship.
-     * </p>
-     * 
-     * <p>
-     * The <code>@NotNull</code> Bean Validation constraint means that the ticket category must be specified.
-     * </p>
-     */
-    @ManyToOne
-    @NotNull
-    private TicketCategory ticketCategory;
+   /**
+    * <p>
+    * The ticket category to which this ticket price category belongs. The <code>@ManyToOne<code> JPA mapping establishes this relationship.
+    * </p>
+    * 
+    * <p>
+    * The <code>@NotNull</code> Bean Validation constraint means that the ticket category must be specified.
+    * </p>
+    */
+   @ManyToOne
+   @NotNull
+   private TicketCategory ticketCategory;
 
-    /**
-     * The price for this category of ticket.
-     */
-    private float price;
+   /**
+    * The price for this category of ticket.
+    */
+   private float price;
 
-    /* Boilerplate getters and setters */
-    
-    public Long getId() {
-        return id;
-    }
+   /* Boilerplate getters and setters */
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+   public Long getId()
+   {
+      return id;
+   }
 
-    public Show getShow() {
-        return show;
-    }
+   public void setId(Long id)
+   {
+      this.id = id;
+   }
 
-    public void setShow(Show show) {
-        this.show = show;
-    }
+   public Show getShow()
+   {
+      return show;
+   }
 
-    public Section getSection() {
-        return section;
-    }
+   public void setShow(Show show)
+   {
+      this.show = show;
+   }
 
-    public void setSection(Section section) {
-        this.section = section;
-    }
+   public Section getSection()
+   {
+      return section;
+   }
 
-    public TicketCategory getTicketCategory() {
-        return ticketCategory;
-    }
+   public void setSection(Section section)
+   {
+      this.section = section;
+   }
 
-    public void setTicketCategory(TicketCategory ticketCategory) {
-        this.ticketCategory = ticketCategory;
-    }
+   public TicketCategory getTicketCategory()
+   {
+      return ticketCategory;
+   }
 
-    public float getPrice() {
-        return price;
-    }
+   public void setTicketCategory(TicketCategory ticketCategory)
+   {
+      this.ticketCategory = ticketCategory;
+   }
 
-    public void setPrice(float price) {
-        this.price = price;
-    }
+   public float getPrice()
+   {
+      return price;
+   }
 
-    /* equals() and hashCode() for TicketPrice, using the natural identity of the object */
-    
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+   public void setPrice(float price)
+   {
+      this.price = price;
+   }
 
-        TicketPrice that = (TicketPrice) o;
+   /* equals() and hashCode() for TicketPrice, using the natural identity of the object */
 
-        if (section != null ? !section.equals(that.section) : that.section != null)
-            return false;
-        if (show != null ? !show.equals(that.show) : that.show != null)
-            return false;
-        if (ticketCategory != null ? !ticketCategory.equals(that.ticketCategory) : that.ticketCategory != null)
-            return false;
+   @Override
+   public boolean equals(Object o)
+   {
+      if (this == o)
+         return true;
+      if (o == null || getClass() != o.getClass())
+         return false;
 
-        return true;
-    }
+      TicketPrice that = (TicketPrice) o;
 
-    @Override
-    public int hashCode() {
-        int result = show != null ? show.hashCode() : 0;
-        result = 31 * result + (section != null ? section.hashCode() : 0);
-        result = 31 * result + (ticketCategory != null ? ticketCategory.hashCode() : 0);
-        return result;
-    }
+      if (section != null ? !section.equals(that.section) : that.section != null)
+         return false;
+      if (show != null ? !show.equals(that.show) : that.show != null)
+         return false;
+      if (ticketCategory != null ? !ticketCategory.equals(that.ticketCategory) : that.ticketCategory != null)
+         return false;
+
+      return true;
+   }
+
+   @Override
+   public int hashCode()
+   {
+      int result = show != null ? show.hashCode() : 0;
+      result = 31 * result + (section != null ? section.hashCode() : 0);
+      result = 31 * result + (ticketCategory != null ? ticketCategory.hashCode() : 0);
+      return result;
+   }
 }

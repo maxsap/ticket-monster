@@ -19,12 +19,12 @@ import org.jboss.errai.common.client.api.annotations.Portable;
  * <p>
  * A reference to a media object such as images, sound bites, video recordings, that can be used in the application.
  * </p>
- * 
+ *
  * <p>
  * A media item contains the type of the media, which is required to render it correctly, as well as the URL at which the media
  * should be sourced.
  * </p>
- * 
+ *
  * @author Marius Bogoevici
  * @author Pete Muir
  */
@@ -50,7 +50,7 @@ public class MediaItem implements Serializable {
      * <p>
      * The type of the media, required to render the media item correctly.
      * </p>
-     * 
+     *
      * <p>
      * The media type is a <em>closed set</em> - as each different type of media requires support coded into the view layers, it
      * cannot be expanded upon without rebuilding the application. It is therefore represented by an enumeration. We instruct
@@ -66,11 +66,11 @@ public class MediaItem implements Serializable {
      * <p>
      * The URL from which the media item can be sourced
      * </p>
-     * 
+     *
      * <p>
      * The url of the media item forms it's natural id and cannot be shared between event categories
      * </p>
-     * 
+     *
      * <p>
      * The <code>@URL<code> Bean Validation ensures the the URL is, indeed, a valid URL.
      * </p>

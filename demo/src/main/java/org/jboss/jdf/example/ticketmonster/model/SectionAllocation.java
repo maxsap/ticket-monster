@@ -23,17 +23,17 @@ import javax.validation.constraints.NotNull;
  * <p>
  * Represents the state of ticket allocation in a section, for a specific performance.
  * </p>
- * 
+ *
  * <p>
  * Optimistic locking ensures that two tickets will not be sold within the same row. Adding a member annotated with
  * <code>@Version</code> enables optimistic locking.
  * </p>
- * 
+ *
  * <p>
  * The performance and section form the natural id of this entity, and therefore must be unique. JPA requires us to use the
  * class level <code>@Table</code> constraint.
  * </p>
- * 
+ *
  * @author Marius Bogoevici
  * @author Pete Muir
  */
@@ -55,7 +55,7 @@ public class SectionAllocation implements Serializable {
      * <p>
      * The version used to optimistically lock this entity.
      * </p>
-     * 
+     *
      * <p>
      * Adding this field enables optimistic locking. As we don't access this field in the application, we need to suppress the
      * warnings the java compiler gives us about not using the field!
@@ -69,7 +69,7 @@ public class SectionAllocation implements Serializable {
      * <p>
      * The performance to which this allocation relates. The <code>@ManyToOne<code> JPA mapping establishes this relationship.
      * </p>
-     * 
+     *
      * <p>
      * The performance must be specified, so we add the Bean Validation constrain <code>@NotNull</code>
      * </p>
@@ -82,7 +82,7 @@ public class SectionAllocation implements Serializable {
      * <p>
      * The section to which this allocation relates. The <code>@ManyToOne<code> JPA mapping establishes this relationship.
      * </p>
-     * 
+     *
      * <p>
      * The section must be specified, so we add the Bean Validation constrain <code>@NotNull</code>
      * </p>
@@ -95,13 +95,13 @@ public class SectionAllocation implements Serializable {
      * <p>
      * A two dimensional matrix of allocated seats in a section, represented by a 2 dimensional array.
      * </p>
-     * 
+     *
      * <p>
      * A two dimensional array doesn't have a natural RDBMS mapping, so we simply store this a binary object in the database, an
      * approach which requires no additional mapping logic. Any analysis of which seats within a section are allocated is done
      * in the business logic, below, not by the RDBMS.
      * </p>
-     * 
+     *
      * <p>
      * <code>@Lob</code> instructs JPA to map this a large object in the database
      * </p>
@@ -142,8 +142,8 @@ public class SectionAllocation implements Serializable {
      */
     @PostLoad
     void initialize() {
-    	if (this.allocated == null) {
-    		this.allocated = new long[this.section.getNumberOfRows()][this.section.getRowCapacity()];
+        if (this.allocated == null) {
+            this.allocated = new long[this.section.getNumberOfRows()][this.section.getRowCapacity()];
             for (long[] seatStates : allocated) {
                 Arrays.fill(seatStates, 0l);
             }
@@ -152,7 +152,7 @@ public class SectionAllocation implements Serializable {
 
     /**
      * Check if a particular seat is allocated in this section for this performance.
-     * 
+     *
      * @return true if the seat is allocated, otherwise false
      */
     public boolean isAllocated(Seat s) {
@@ -163,7 +163,7 @@ public class SectionAllocation implements Serializable {
     /**
      * Allocate the specified number seats within this section for this performance. Optionally allocate them in a contiguous
      * block.
-     * 
+     *
      * @param seatCount the number of seats to allocate
      * @param contiguous whether the seats must be allocated in a contiguous block or not
      * @return the allocated seats
@@ -224,7 +224,7 @@ public class SectionAllocation implements Serializable {
 
     /**
      * Helper method which can locate blocks of seats
-     * 
+     *
      * @param row The row number to check
      * @param startSeat The seat to start with in the row
      * @param size The size of the block to locate
@@ -258,7 +258,7 @@ public class SectionAllocation implements Serializable {
 
     /**
      * Helper method to allocate a specific block of seats
-     * 
+     *
      * @param row the row in which the seat should be allocated
      * @param start the seat number to start allocating from
      * @param size the size of the block to allocate
